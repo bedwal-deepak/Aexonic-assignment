@@ -7,10 +7,11 @@ router.post("/signup", authController.signup);
 
 router.post("/login", authController.login);
 
+router.get("/getAllUsers", authController.protect, userController.getAllUsers);
+
 router
   .route("/")
   .get(authController.protect, userController.getUser)
-  .get(authController.protect, userController.getAllUsers)
   .post(userController.createUser);
 
 router.route("/:id").patch(authController.protect, userController.updateUser);
